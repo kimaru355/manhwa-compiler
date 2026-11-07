@@ -1,0 +1,19 @@
+{
+  "name": "hdoujin-pdf-maker",
+  "version": "1.0.0",
+  "description": "Join the chapter images of a manhwa folder into chapter PDFs and one complete PDF.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "local.hdoujin.pdfmaker",
+    "productName": "HDoujin PDF Maker",
+    "files": ["main.js", "preload.js", "src/**/*", "renderer/**/*"]
+  }
+}

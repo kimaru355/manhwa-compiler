@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'">
+  <title>HDoujin PDF Maker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>HDoujin PDF Maker</h1>
+
+    <fieldset class="modes" id="modes">
+      <label><input type="radio" name="mode" value="single" checked> One manhwa folder</label>
+      <label><input type="radio" name="mode" value="multi"> Several manhwa folders</label>
+      <label><input type="radio" name="mode" value="library"> Batch: a folder full of manhwas</label>
+    </fieldset>
+
+    <section class="row">
+      <button id="choose">Choose…</button>
+      <div id="folder" class="folder muted">Nothing chosen</div>
+    </section>
+
+    <section id="listBox" hidden>
+      <div class="listhead">
+        <span id="listSummary"></span>
+        <span><a href="#" id="selAll">all</a> · <a href="#" id="selNone">none</a></span>
+      </div>
+      <div id="list" class="list"></div>
+    </section>
+
+    <fieldset class="outputs">
+      <legend>Build</legend>
+      <label class="check">
+        <input type="checkbox" id="chapters" checked>
+        Chapter PDFs (in a "&lt;manhwa&gt; - chapters" folder)
+      </label>
+      <label class="check">
+        <input type="checkbox" id="complete">
+        Complete PDF (&lt;manhwa&gt;.pdf — slower, writes every page twice if combined with chapters)
+      </label>
+    </fieldset>
+    <label class="check">
+      <input type="checkbox" id="skip">
+      Skip PDFs that already exist (resume an interrupted batch)
+    </label>
+
+    <section class="row">
+      <button id="start" class="primary" disabled>Start</button>
+      <button id="cancel" hidden>Cancel</button>
+    </section>
+
+    <section>
+      <div class="bar"><div id="fill"></div></div>
+      <div class="statusline"><span id="status">Idle</span><span id="percent">0%</span></div>
+    </section>
+
+    <div id="result" class="result" hidden>
+      <span id="resultText"></span>
+      <button id="reveal" hidden>Show in folder</button>
+    </div>
+
+    <pre id="log" aria-live="polite"></pre>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>
